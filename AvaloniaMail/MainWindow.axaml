@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Width="1024" Height="768"
+        x:Class="AvaloniaMail.MainWindow"
+        Closing="Window_OnClosing"
+        GotFocus="Window_OnFocus"
+        Title="AvaloniaMail">
+        <DockPanel>
+                <Menu DockPanel.Dock="Top">
+                        <MenuItem Header="File">
+                                <MenuItem Header="Exit" Click="Exit_OnClick"></MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="Account">
+                                <MenuItem Header="Set up new account" Click="Setup_OnClick"></MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="Help">
+                                <MenuItem Header="About AvaloniaMail" Click="About_OnClick"></MenuItem>
+                        </MenuItem>
+                </Menu>
+                <SplitView IsPaneOpen="True" DisplayMode="Inline" OpenPaneLength="296" DockPanel.Dock="Top">
+                        <SplitView.Pane>
+                                <ListBox Name="Accounts" Background="DarkSlateGray" SelectionChanged="Accounts_OnSelectionChanged"></ListBox>
+                        </SplitView.Pane>
+
+                        <ListBox Name="Mails" DoubleTapped="Mails_OnDoubleTapped" />
+                </SplitView>
+        </DockPanel>
+</Window>
