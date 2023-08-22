@@ -16,6 +16,11 @@ public partial class MainWindow : Window
     private readonly AboutBox _aboutBox = new();
     private readonly Dictionary<string, AvaloniaList<MailMsg>> _messages = new();
 
+    public MainWindow()
+    {
+        InitializeComponent();
+    }
+    
     private void About_OnClick(object? sender, RoutedEventArgs e)
     {
         _aboutBox.Show();

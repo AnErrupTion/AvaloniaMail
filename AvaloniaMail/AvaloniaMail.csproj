@@ -5,26 +5,12 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
-        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
-        <Configuration>Release</Configuration>
-        <Platform>x64</Platform>
-        <InvariantGlobalization>true</InvariantGlobalization>
-        <SelfContained>true</SelfContained>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <PublishAot>true</PublishAot>
-        <TrimMode>full</TrimMode>
-        <IlcGenerateCompleteTypeMetadata>false</IlcGenerateCompleteTypeMetadata>
-        <IlcGenerateStackTraceData>false</IlcGenerateStackTraceData>
-        <IlcDisableUnhandledExceptionExperience>true</IlcDisableUnhandledExceptionExperience>
-        <StripSymbols>true</StripSymbols>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia.Desktop" Version="11.0.0-preview8" />
-        <PackageReference Include="Avalonia.HtmlRenderer" Version="11.0.0-preview7" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.0-preview8" />
-        <PackageReference Include="MailKit" Version="4.0.0" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.0.4" />
+        <PackageReference Include="Avalonia.HtmlRenderer" Version="11.0.0" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.4" />
+        <PackageReference Include="MailKit" Version="4.1.0" />
     </ItemGroup>
 </Project>

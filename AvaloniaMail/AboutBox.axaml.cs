@@ -7,6 +7,11 @@ public partial class AboutBox : Window
 {
     public bool CancelClosing = true;
 
+    public AboutBox()
+    {
+        InitializeComponent();
+    }
+
     private void Window_OnClosing(object? sender, WindowClosingEventArgs e)
     {
         if (CancelClosing)

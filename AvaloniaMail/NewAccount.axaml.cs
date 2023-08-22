@@ -5,6 +5,11 @@ namespace AvaloniaMail;
 
 public partial class NewAccount : Window
 {
+    public NewAccount()
+    {
+        InitializeComponent();
+    }
+    
     private void Ok_OnClick(object? sender, RoutedEventArgs e)
     {
         Reference.ImapAddress = ImapAddress.Text;
