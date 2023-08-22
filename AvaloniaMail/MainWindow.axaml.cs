@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Avalonia.Collections;
 using Avalonia.Controls;
@@ -11,7 +12,7 @@ namespace AvaloniaMail;
 
 public partial class MainWindow : Window
 {
-    private bool _cancelClosing = true, _gotFocus;
+    private bool _cancelClosing = true;
 
     private readonly AboutBox _aboutBox = new();
     private readonly Dictionary<string, AvaloniaList<MailMsg>> _messages = new();
@@ -42,7 +43,7 @@ public partial class MainWindow : Window
         Reference.ImapAddress = string.Empty;
         Reference.Address = string.Empty;
         Reference.Password = string.Empty;
-        
+
         await new NewAccount().ShowDialog(this);
 
         if (string.IsNullOrEmpty(Reference.ImapAddress)
@@ -73,9 +74,9 @@ public partial class MainWindow : Window
         Load(selectedAccount);
     }
 
-    private async void Window_OnFocus(object? sender, GotFocusEventArgs e)
+    private async void Window_OnOpened(object? sender, EventArgs eventArgs)
     {
-        if (_gotFocus || !File.Exists("accounts.dat"))
+        if (!File.Exists("accounts.dat"))
             return;
 
         var lines = await File.ReadAllLinesAsync("accounts.dat");
@@ -94,8 +95,6 @@ public partial class MainWindow : Window
 
             Accounts.Items.Add(new MailAccount(imapAddress, imapPort, address, Reference.Password));
         }
-
-        _gotFocus = true;
     }
 
     private void Mails_OnDoubleTapped(object? sender, TappedEventArgs e)
@@ -138,8 +137,11 @@ public partial class MainWindow : Window
         }
 
         var messages = new AvaloniaList<MailMsg>();
-        foreach (var message in MailInterface.Messages)
+        foreach (var message in MailInterface.Messages.OrderByDescending(x => x.Message.Date))
+        {
             Mails.Items.Add(message);
+            messages.Add(message);
+        }
 
         _messages.Add(account.Address, messages);
 

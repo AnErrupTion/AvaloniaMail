@@ -6,7 +6,7 @@
         Width="1024" Height="768"
         x:Class="AvaloniaMail.MainWindow"
         Closing="Window_OnClosing"
-        GotFocus="Window_OnFocus"
+        Opened="Window_OnOpened"
         Title="AvaloniaMail">
         <DockPanel>
                 <Menu DockPanel.Dock="Top">
